@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Celestials: Whitelist Checker</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        @font-face {
+            font-family: 'YourCustomFont';
+            src: url('StyreneB-Black-Trial-BF63f6cbe3dc69b.otf') format('opentype');
+        }
+
+        body {
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: 'YourCustomFont', sans-serif; /* Use a fallback font like sans-serif */
+            background-color: #f2eeee;
+            color: #000;
+        }
+                
+        .main {
+            width: 100%;
+        }
+
+        .dark-bg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            background: #131e25;
+        }
+
+        .movingX {
+            position: relative;
+            top: 7px;
+            animation: movingX 20s linear infinite;
+        }
+
+        .wallet-check {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .wallet-check-button {
+            margin-top: 20px;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #wallet-input {
+            padding: 10px;
+            font-size: 14px; /* Updated font size to 14px */
+            width: 50%; /* Adjust the width as needed */
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #000;
+            margin: 0 auto; /* Center the input field horizontally */
+        }
+
+        #wallet-input::placeholder {
+            text-align: center; /* Center the placeholder text */
+        }
+
+        #check-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #b33d2a;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 10px;
+        }
+
+        #check-button:hover {
+            background-color: #ff4500;
+        }
+
+        .result {
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: red;
+        }
+
+        .congrats-result {
+            color: #228B22;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .result,
+        .congrats-result {
+            font-family: 'YourCustomFont', sans-serif;
+        }
+
+        @keyframes movingX {
+            0% {
+                -webkit-transform: translateX(0) rotateY(0deg);
+                transform: translateX(0) rotateY(0deg);
+            }
+            50% {
+                -webkit-transform: translateX(calc(100vw - 100%));
+                transform: translateX(calc(100vw - 100%));
+            }
+            51% {
+                -webkit-transform: translateX(calc(100vw - 100%)) rotateY(180deg);
+                transform: translateX(calc(100vw - 100%)) rotateY(180deg);
+            }
+            100% {
+                -webkit-transform: translateX(0) rotateY(180deg);
+                transform: translateX(0) rotateY(180deg);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .movingX {
+                width: 230px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <img class="movingX" src="img/0d7075de29e75319909aed626dfb7150-removebg-preview.png" alt="tank" />
+    </div>
+    
+    <div class="wallet-check">
+        <div class="title">The Celestials: Whitelist Checker</div>
+        <input type="text" id="wallet-input" placeholder="Enter your wallet address">
+        <div class="wallet-check-button">
+            <button id="check-button" onclick="checkWhitelist()">Check Wallet</button>
+        </div>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        // List of whitelisted wallet addresses (replace with your own list)
+        const whitelist = [
+            "drey",
+            "mama nekkei",
+            "carl"
+        ];
+
+        function checkWhitelist() {
+            const input = document.getElementById("wallet-input").value;
+            const resultDiv = document.getElementById("result");
+
+            if (whitelist.includes(input)) {
+                resultDiv.textContent = "Congrats! You are whitelisted.";
+                resultDiv.className = "congrats-result";
+            } else {
+                resultDiv.textContent = "Sorry, you are not whitelisted.";
+                resultDiv.className = "result";
+            }
+        }
+    </script>
+</body>
+</html>
